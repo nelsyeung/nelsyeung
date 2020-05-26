@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  web:
+    container_name: nelsyeung
+    environment:
+      - VIRTUAL_HOST=nelsyeung.com
+      - LETSENCRYPT_HOST=nelsyeung.com
+    image: nginx
+    restart: always
+    volumes:
+      - ./dist:/usr/share/nginx/html:ro
+
+networks:
+  default:
+    external:
+      name: ${NETWORK}
